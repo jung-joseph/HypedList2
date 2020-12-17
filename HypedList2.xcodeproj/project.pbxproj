@@ -16,6 +16,7 @@
 		537D6FA5258A823D00F6DDE7 /* HypedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537D6FA4258A823D00F6DDE7 /* HypedEvent.swift */; };
 		537D6FA8258A8C2200F6DDE7 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537D6FA7258A8C2200F6DDE7 /* LabelView.swift */; };
 		537D6FAB258A934B00F6DDE7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537D6FAA258A934B00F6DDE7 /* ImagePicker.swift */; };
+		537D6FAE258ADD6800F6DDE7 /* HypedEventTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537D6FAD258ADD6800F6DDE7 /* HypedEventTileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		537D6FA4258A823D00F6DDE7 /* HypedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypedEvent.swift; sourceTree = "<group>"; };
 		537D6FA7258A8C2200F6DDE7 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		537D6FAA258A934B00F6DDE7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		537D6FAD258ADD6800F6DDE7 /* HypedEventTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypedEventTileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				537D6FA4258A823D00F6DDE7 /* HypedEvent.swift */,
 				537D6FA7258A8C2200F6DDE7 /* LabelView.swift */,
 				537D6FAA258A934B00F6DDE7 /* ImagePicker.swift */,
+				537D6FAD258ADD6800F6DDE7 /* HypedEventTileView.swift */,
 			);
 			path = HypedList2;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				537D6FAE258ADD6800F6DDE7 /* HypedEventTileView.swift in Sources */,
 				537D6FA2258A813900F6DDE7 /* CreateHypedEventView.swift in Sources */,
 				537D6FA5258A823D00F6DDE7 /* HypedEvent.swift in Sources */,
 				537D6F90258A757F00F6DDE7 /* HypedListTabView.swift in Sources */,
