@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HypedEventTileView: View {
     
-    var hypedEvent: HypedEvent
+    @ObservedObject var hypedEvent: HypedEvent
     
     var body: some View {
         VStack(spacing: 0){
@@ -31,16 +31,16 @@ struct HypedEventTileView: View {
 
             HStack {
                 Image(systemName: "calendar")
-                Text("SEP 4")
+                Text(hypedEvent.dateAsString())
                 Spacer()
-                Text("Next Month")
+                Text(hypedEvent.timeFromNow())
                 Image(systemName: "clock.fill")
                     .foregroundColor(.blue)
                  
             }
             .font(.title3)
             .padding(.horizontal, 10)
-            .padding(.bottom, 30)
+            .padding(.bottom, 10)
             .background(Color.white)
 
             

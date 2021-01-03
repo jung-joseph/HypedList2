@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HypedListTabView: View {
+    
+    init() {
+//        UITabBar.appearance().backgroundColor = UIColor.orange
+    }
     var body: some View {
         TabView {
             NavigationView {
@@ -18,18 +22,22 @@ struct HypedListTabView: View {
                     Image(systemName: "calendar" )
                     Text("Upcoming")
                 }
-            Text("Hello 2")
-                .tabItem {
+            NavigationView {
+            DiscoverView()
+            }                .tabItem {
                     Image(systemName: "magnifyingglass" )
                 Text("Discover")
+                }
+            NavigationView {
+                PastView()
             }
-            Text("Hello 3")
-                .tabItem {
-                    Image(systemName: "gobackward")
+            .tabItem {
+                Image(systemName: "gobackward")
                 Text("Past")
             }
 
         }
+//        .accentColor(.blue)
     }
 }
 

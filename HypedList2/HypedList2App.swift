@@ -12,6 +12,10 @@ struct HypedList2App: App {
     var body: some Scene {
         WindowGroup {
             HypedListTabView()
+                .onAppear {
+                    DataController.shared.loadData()
+                    DataController.shared.getDiscoverEvents()
+                }
         }
     }
 }
