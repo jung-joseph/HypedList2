@@ -9,6 +9,7 @@ import Foundation
 import SwiftDate
 import UIColor_Hex_Swift
 import SwiftUI
+import WidgetKit
 
 
 class DataController: ObservableObject{
@@ -55,17 +56,21 @@ class DataController: ObservableObject{
     
     func saveData() {
         DispatchQueue.global().async {
+            if let defaults = UserDefaults(suiteName: "group.com.CasaAdobeSoftware.hypedlist2") {
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(self.hypedEvents) {
-                UserDefaults.standard.setValue(encoded, forKey: "hypedEvents")
-                UserDefaults.standard.synchronize()
+                defaults.setValue(encoded, forKey: "hypedEvents")
+                defaults.synchronize()
+                WidgetCenter.shared.reloadAllTimelines()
+            }
             }
         }
     }
     
     func loadData() {
         DispatchQueue.global().async {
-            if let data = UserDefaults.standard.data(forKey: "hypedEvents") {
+            if let defaults = UserDefaults(suiteName: "group.com.CasaAdobeSoftware.hypedlist2") {
+            if let data = defaults.data(forKey: "hypedEvents") {
                 let decoder = JSONDecoder()
                 if let jsonHypedEvents = try? decoder.decode([HypedEvent].self, from: data) {
                     DispatchQueue.main.async {
@@ -73,11 +78,28 @@ class DataController: ObservableObject{
                     }
                 }
             }
+            }
 
         }
 
     }
     
+    
+    func getUpcomingForWidget() -> [HypedEvent] {
+        if let defaults = UserDefaults(suiteName: "group.com.CasaAdobeSoftware.hypedlist2") {
+            if let data = defaults.data(forKey: "hypedEvents") {
+                let decoder = JSONDecoder()
+                if let jsonHypedEvents = try? decoder.decode([HypedEvent].self, from: data) {
+                    
+                    return jsonHypedEvents
+                    
+                }
+            }
+        }
+        return []
+    }
+
+
     func getDiscoverEvents() {
         
         if let url = URL(string: "https://api.jsonbin.io/b/5fec91746ee4263ce2b0d427/latest") {
