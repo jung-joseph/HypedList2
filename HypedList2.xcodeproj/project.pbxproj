@@ -15,6 +15,8 @@
 		5321FAFF25A353E100B5DA9D /* HypedList2iOSWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5321FAFA25A353DF00B5DA9D /* HypedList2iOSWidget.intentdefinition */; };
 		5321FB0225A353E100B5DA9D /* HypedList2iOSWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5321FAF225A353DF00B5DA9D /* HypedList2iOSWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		532506E9259B7A6800016B74 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532506E8259B7A6800016B74 /* PastView.swift */; };
+		53265F3D25ACAEC7008BFF56 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53265F3C25ACAEC7008BFF56 /* MainView.swift */; };
+		53265F4B25ACB2EB008BFF56 /* HypedListSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53265F4A25ACB2EB008BFF56 /* HypedListSidebarView.swift */; };
 		53287F5C259101380087A0B7 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53287F5B259101380087A0B7 /* DataController.swift */; };
 		5357629025A3DBF400F529A8 /* HypedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537D6FA4258A823D00F6DDE7 /* HypedEvent.swift */; };
 		5357629325A3DD0E00F529A8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53287F5B259101380087A0B7 /* DataController.swift */; };
@@ -70,6 +72,8 @@
 		5321FAFB25A353E100B5DA9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5321FAFD25A353E100B5DA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532506E8259B7A6800016B74 /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
+		53265F3C25ACAEC7008BFF56 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		53265F4A25ACB2EB008BFF56 /* HypedListSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypedListSidebarView.swift; sourceTree = "<group>"; };
 		53287F5B259101380087A0B7 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		536E003A259F9AEB007EC0FC /* HypedEventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypedEventDetailView.swift; sourceTree = "<group>"; };
 		537D6F8A258A757F00F6DDE7 /* HypedList2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HypedList2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				537D6F8D258A757F00F6DDE7 /* HypedList2App.swift */,
+				53265F3C25ACAEC7008BFF56 /* MainView.swift */,
 				537D6F8F258A757F00F6DDE7 /* HypedListTabView.swift */,
+				53265F4A25ACB2EB008BFF56 /* HypedListSidebarView.swift */,
 				538CF2AA2592919600A7360F /* Views */,
 				538CF2A92592915700A7360F /* Data */,
 				537D6F91258A758200F6DDE7 /* Assets.xcassets */,
@@ -325,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53265F4B25ACB2EB008BFF56 /* HypedListSidebarView.swift in Sources */,
 				537D6FAE258ADD6800F6DDE7 /* HypedEventTileView.swift in Sources */,
 				537D6FA2258A813900F6DDE7 /* CreateHypedEventView.swift in Sources */,
 				532506E9259B7A6800016B74 /* PastView.swift in Sources */,
@@ -338,6 +345,7 @@
 				537D6F9F258A779600F6DDE7 /* UpcomingView.swift in Sources */,
 				53E85DB7259B751A00321702 /* HypedEventListView.swift in Sources */,
 				537D6FA8258A8C2200F6DDE7 /* LabelView.swift in Sources */,
+				53265F3D25ACAEC7008BFF56 /* MainView.swift in Sources */,
 				53C854A5259E0B7300D018F4 /* DiscoverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

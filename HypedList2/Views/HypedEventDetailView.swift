@@ -8,13 +8,112 @@
 import SwiftUI
 
 struct HypedEventDetailView: View {
-    
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ObservedObject var hypedEvent: HypedEvent
     @State var showingCreateView = false
-
+    @State var deleted = false
     var isDiscover = false
     
     var body: some View {
+        
+        if deleted {
+            Text("Select an Event")
+        } else {
+            if horizontalSizeClass == .compact {
+                compact
+            } else {
+                regular
+            }
+            
+        }
+    }
+    
+    
+    var regular: some View {
+        VStack {
+            VStack(spacing: 0){
+                if hypedEvent.image() != nil {
+                    hypedEvent.image()!
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } else {
+                    
+                    
+                    hypedEvent.color
+                        .aspectRatio(contentMode: .fit)
+                    
+                }
+                
+                
+                Text(hypedEvent.title)
+                    .font(.largeTitle)
+                    .padding(.top,10)
+                    .padding(.horizontal,10)
+                
+                
+                
+                
+                
+                Text("\(hypedEvent.timeFromNow().capitalized) on \(hypedEvent.dateAsString())")
+                    .font(.title)
+                    .padding(.bottom,10)
+                    .padding(.horizontal,10)
+
+                
+            }
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            
+            HStack{
+                if hypedEvent.validURL() != nil {
+                    Button(action: {
+                        UIApplication.shared.open(hypedEvent.validURL()!)
+                    }) {
+                        HypedEventDetailViewButtonCompact(backgroundColor: .orange, imageName: "link", text: "Visit Site")
+                    }
+                }
+                
+                
+                if isDiscover {
+                    Button(action: {
+                        DataController.shared.addFromDiscover(hypedEvent: hypedEvent)
+                    }) {
+                        HypedEventDetailViewButtonCompact(backgroundColor: .blue, imageName: "plus.circle", text: hypedEvent.hasBeenAdded ? "Added" : "Add")
+                    }
+                    .disabled(hypedEvent.hasBeenAdded)
+                    .opacity(hypedEvent.hasBeenAdded ? 0.5 : 1.0)
+                } else {
+                    
+                    Button(action: {
+                        showingCreateView = true
+                    }) {
+                        HypedEventDetailViewButtonCompact(backgroundColor: .yellow, imageName: "pencil.circle", text: "Edit")
+                    }
+                    .sheet(isPresented: $showingCreateView) {
+                        CreateHypedEventView(hypedEvent: hypedEvent)
+                    }
+                    
+                    Button(action: {
+                        DataController.shared.deleteHypedEvent(hypedEvent: hypedEvent)
+                        deleted = true
+                    }) {
+                        HypedEventDetailViewButtonCompact(backgroundColor: .red, imageName: "trash", text: "Delete")
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            .padding(.top,15)
+
+        }
+        .padding(40)
+
+    }
+    
+    var compact: some View {
         VStack(spacing: 0){
             if hypedEvent.image() != nil {
                 hypedEvent.image()!
@@ -67,6 +166,7 @@ struct HypedEventDetailView: View {
                 
                 Button(action: {
                     DataController.shared.deleteHypedEvent(hypedEvent: hypedEvent)
+                    deleted = true
                 }) {
                     HypedEventDetailViewButton(backgroundColor: .red, imageName: "trash", text: "Delete")
                     
@@ -77,6 +177,8 @@ struct HypedEventDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
     }
+    
+
 }
 
 struct HypedEventDetailViewButton: View {
@@ -105,13 +207,37 @@ struct HypedEventDetailViewButton: View {
     }
     
 }
+
+struct HypedEventDetailViewButtonCompact: View {
     
+    var backgroundColor: Color
+    var imageName: String
+    var text: String
+    
+    var body: some View {
+        
+        HStack {
+            Image(systemName: imageName)
+            Text(text)
+        }
+        .font(.title2)
+        .padding(12)
+        .background(backgroundColor)
+        .foregroundColor(.white)
+        .cornerRadius(5)
+        
+    }
+    
+}
 struct HypedEventDetailView_Previews: PreviewProvider {
     static var previews: some View {
         
         Group {
             HypedEventDetailView(hypedEvent: testHypedEvent1)
+            HypedEventDetailView(hypedEvent: testHypedEvent2)
             HypedEventDetailViewButton(backgroundColor: .orange, imageName: "link", text: "Visit Site")
+            HypedEventDetailViewButtonCompact(backgroundColor: .orange, imageName: "link", text: "Visit Site")
+
         }
     }
 }

@@ -11,11 +11,13 @@ import SwiftUI
 struct HypedList2App: App {
     var body: some Scene {
         WindowGroup {
-            HypedListTabView()
+            MainView()
                 .onAppear {
-                    DataController.shared.loadData()
-                    DataController.shared.getDiscoverEvents()
-                }
+                DataController.shared.loadData()
+                DataController.shared.getDiscoverEvents()
+                
+            }
         }
     }
 }
+
