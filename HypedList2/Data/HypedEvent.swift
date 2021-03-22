@@ -58,7 +58,7 @@ class HypedEvent: ObservableObject, Identifiable, Codable {
     init(){
         
     }
-    
+    #if !os(watchOS)
     var hasBeenAdded: Bool {
         let hypedEvent = DataController.shared.hypedEvents.first { (hypedEvent) -> Bool in
             return hypedEvent.id == self.id
@@ -69,6 +69,7 @@ class HypedEvent: ObservableObject, Identifiable, Codable {
             return false
         }
     }
+    #endif
     
     func image() -> Image? {
         if let data = imageData {
@@ -119,7 +120,7 @@ var testHypedEvent1: HypedEvent {
 var testHypedEvent2: HypedEvent {
     let hypedEvent = HypedEvent()
     
-    hypedEvent.title = "Family Trip to Yellowstone"
+    hypedEvent.title = "Family and Friends Trip to Yellowstone"
     hypedEvent.color = .blue
     hypedEvent.date = Date()
     return hypedEvent

@@ -13,8 +13,9 @@ struct HypedList2App: App {
         WindowGroup {
             MainView()
                 .onAppear {
-                DataController.shared.loadData()
-                DataController.shared.getDiscoverEvents()
+                    DataController.shared.loadData()
+                    DataController.shared.getDiscoverEvents()
+                    PhoneToWatchDataController.shared.setupSession()
                 
             }
         }

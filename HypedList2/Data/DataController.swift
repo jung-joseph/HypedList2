@@ -57,13 +57,14 @@ class DataController: ObservableObject{
     func saveData() {
         DispatchQueue.global().async {
             if let defaults = UserDefaults(suiteName: "group.com.CasaAdobeSoftware.hypedlist2") {
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(self.hypedEvents) {
-                defaults.setValue(encoded, forKey: "hypedEvents")
-                defaults.synchronize()
-                WidgetCenter.shared.reloadAllTimelines()
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(self.hypedEvents) {
+                    defaults.setValue(encoded, forKey: "hypedEvents")
+                    defaults.synchronize()
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
             }
-            }
+            PhoneToWatchDataController.shared.sendContext(context: PhoneToWatchDataController.shared.convertHypedEventsToContext(hypedEvents: self.upcomingHypedEvents))
         }
     }
     
@@ -75,6 +76,7 @@ class DataController: ObservableObject{
                 if let jsonHypedEvents = try? decoder.decode([HypedEvent].self, from: data) {
                     DispatchQueue.main.async {
                         self.hypedEvents = jsonHypedEvents
+                        PhoneToWatchDataController.shared.sendContext(context: PhoneToWatchDataController.shared.convertHypedEventsToContext(hypedEvents: self.upcomingHypedEvents))
                     }
                 }
             }
